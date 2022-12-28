@@ -24,7 +24,7 @@ const SideBar = (props: any) => {
         {!accounts?.length && (
           <div className="mb-4">
             <div className="flex p-6  ">
-              <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
+              {/* <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" /> */}
             </div>
           </div>
         )}
@@ -32,7 +32,7 @@ const SideBar = (props: any) => {
         {accounts?.length ? (
           <div className="px-3 py-6 mt-6 lg:px-5 lg:pl-3 ">
             <div className="flex items-center justify-center">
-              <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
+              {/* <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" /> */}
             </div>
           </div>
         ) : (

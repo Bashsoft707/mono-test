@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mono.co/connect.js": "^0.2.2",
     "@next/font": "13.1.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
+    "@types/react-redux": "^7.1.24",
     "axios": "^1.2.1",
     "dotenv": "^16.0.3",
     "eslint": "8.30.0",
@@ -29,6 +31,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@headlessui/react": "^1.7.7",
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.15",
     "@types/jsonwebtoken": "^9.0.0",
