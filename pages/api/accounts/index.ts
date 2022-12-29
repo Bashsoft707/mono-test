@@ -42,20 +42,6 @@ const linkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-const unlinkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { accountId } = req.body;
-
-  await mono.unlinkAccount(accountId);
-
-
-  const account = await Account.findOne({ accountId });
-  await account?.remove();
-
-  return res.status(200).json({
-    status: "SUCCESS",
-  });
-};
-
 const getAccounts = asyncHandler(
   async (req: NextApiRequest, res: NextApiResponse, next: any) => {
     const { user } = req as any;
@@ -81,9 +67,8 @@ const defaultMethod = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const handlers = {
-  POST: unlinkAccount,
+  POST: linkAccount,
   GET: getAccounts,
-  DELETE: unlinkAccount,
   ["undefined"]: defaultMethod,
 };
 

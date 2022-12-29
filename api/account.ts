@@ -61,9 +61,8 @@ export const getTrx = async (id: string) => {
 export const unlinkAccount = async (accountId: string) => {
     try {
         const token = window.localStorage.getItem("token");
-        console.log('token', accountId)
         const res = await axios.post(
-            `${URL}/accounts`,
+            `${URL}/accounts/${accountId}`,
             { accountId },
             {
                 headers: { authorization: `Bearer ${token}` },
