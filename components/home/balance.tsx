@@ -1,4 +1,4 @@
-export const Balance = (props: any) => {
+const Balance = (props: any) => {
   const { accounts, setUnlink, handleConnect } = props;
   const summaries = [
     { name: "Food and Drinks", amount: "872.400" },
@@ -18,7 +18,7 @@ export const Balance = (props: any) => {
   const totalBalance = () => {
     let bal = 0;
     accounts.forEach((el: any) => {
-      bal = el.balance + bal;
+      bal = el?.balance + bal;
     });
     return bal / 100;
   };
@@ -34,8 +34,9 @@ export const Balance = (props: any) => {
           {accounts.map((acc: any) => (
             <img
               className="h-8 w-8 -ml-2 rounded-full"
-              src={acc.bankLogo}
-              alt={acc.name}
+              src={acc?.bankLogo}
+              alt={acc?.name}
+              key={acc?.id}
             />
           ))}
 
@@ -89,3 +90,5 @@ export const Balance = (props: any) => {
     </div>
   );
 };
+
+export default Balance;

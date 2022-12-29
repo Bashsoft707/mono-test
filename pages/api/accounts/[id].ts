@@ -1,19 +1,16 @@
 import Mono from "../../../lib/mono";
 import connect from "../../../lib/config";
-import Account from "../../../models/account";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getBankkLogo } from "../../../utils";
 import asyncHandler from "../../../middleware/async";
-import protect from "../../../ddleware";
+import protect from "../../../middleware/auth";
 
 const mono = new Mono();
-protect;
 
 const getTransactions = asyncHandler(
   async (req: NextApiRequest, res: NextApiResponse) => {
     const { id } = req.query;
 
-    const trx = await mono.getTransactions(id);
+    const trx = await mono.getTransactions(id as string);
 
     res.status(200).json({
       status: "SUCCESS",
@@ -32,7 +29,6 @@ const defaultMethod = asyncHandler(
 
 const handlers = {
   GET: getTransactions,
-
   ["undefined"]: defaultMethod,
 };
 
@@ -40,5 +36,6 @@ export default async function AccountApi(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  protect(req, res);
   await Promise.all([connect(), handlers[req.method](req, res)]);
 }

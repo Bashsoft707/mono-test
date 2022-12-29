@@ -19,7 +19,11 @@ export const transactionSlice = createSlice({
   initialState,
   reducers: {
     setTransactionState: (state, action) => {
-      state.transactionState = [...state.transactionState, action.payload];
+      const { payload } = action;
+      return {
+        ...state.transactionState,
+        transactionState: payload,
+      };
     },
   },
 //   extraReducers: {
@@ -35,6 +39,6 @@ export const transactionSlice = createSlice({
 export const { setTransactionState } = transactionSlice.actions;
 
 export const selectTransactionState = (state: AppState) =>
-  state.transactions.transactionState;
+  state.transactions?.transactionState;
 
 export default transactionSlice.reducer;

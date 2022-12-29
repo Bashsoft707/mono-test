@@ -5,11 +5,14 @@ const URL = CONSTANT.BASE_URL;
 export const LinkAccount = async (payload: any) => {
     try {
         const token = window.localStorage.getItem("token");
-        const res = await axios.post(`${URL}/accounts/link`, payload, {
+        const res = await axios.post(`${URL}/accounts`, payload, {
             headers: { authorization: `Bearer ${token}` },
         });
+        const reseult = { success: true, ...res.data };
+        console.log(reseult);
         return { success: true, ...res.data };
     } catch (error) {
+        console.log('error', error)
         return {
             success: false,
             message:
@@ -25,8 +28,10 @@ export const getAccounts = async () => {
         const res = await axios.get(`${URL}/accounts`, {
             headers: { authorization: `Bearer ${token}` },
         });
-        return { success: true, ...res.data };
+        const data = res.data
+        return { success: true, data };
     } catch (error) {
+        console.log('error', error)
         return {
             success: false,
             message:
@@ -39,7 +44,7 @@ export const getAccounts = async () => {
 export const getTrx = async (id: string) => {
     try {
         const token = window.localStorage.getItem("token");
-        const res = await axios.get(`${URL}/accounts/${id}/transactions`, {
+        const res = await axios.get(`${URL}/accounts/${id}`, {
             headers: { authorization: `Bearer ${token}` },
         });
         return { success: true, ...res.data };

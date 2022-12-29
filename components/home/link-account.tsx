@@ -1,4 +1,4 @@
-export const LinkAccount = (props: any) => {
+const LinkAccounts: React.FC = (props: any) => {
   const { handleConnect } = props;
 
   return (
@@ -20,3 +20,5 @@ export const LinkAccount = (props: any) => {
     </div>
   );
 };
+
+export default LinkAccounts;

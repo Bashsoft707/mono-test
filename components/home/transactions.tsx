@@ -1,4 +1,4 @@
-export const Transaction = (props: any) => {
+const Transaction = (props: any) => {
   const { trx } = props;
 
   const images = ["cart", "bus", "house", "lamp", "play"];
@@ -19,7 +19,7 @@ export const Transaction = (props: any) => {
         <div className="flow-root">
           <ul className="">
             {trx.map((el: any, i: number) => (
-              <li className="py-2 sm:py-3">
+              <li className="py-2 sm:py-3" key={el?._id}>
                 <div className="flex space-x-4">
                   <div className="flex-shrink-0">
                     <img
@@ -54,3 +54,5 @@ export const Transaction = (props: any) => {
     </div>
   );
 };
+
+export default Transaction;

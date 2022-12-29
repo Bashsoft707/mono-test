@@ -18,7 +18,11 @@ export const accountSlice = createSlice({
   initialState,
   reducers: {
     setAccountState: (state, action) => {
-      state.accountState = [...state.accountState, action.payload];
+      const { payload } = action;
+      return {
+        ...state.accountState,
+        accountState: payload,
+      }
     },
   },
 //   extraReducers: {

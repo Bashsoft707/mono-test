@@ -4,16 +4,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import User from "../models/user";
 import { NextResponse } from "next/server";
 
-interface IUserRequest extends NextApiRequest {
-  user: string | null;
-}
-
 interface IDecoded {
   id: string;
 }
 
 const protect =  (
-    req: IUserRequest,
+    req: NextApiRequest,
     res: NextApiResponse,
   ) => {
     let token;
@@ -42,12 +38,7 @@ const protect =  (
           .json({ error: "Not authorized to access this route 3" });
       }
 
-      req.user = decoded.id;
-
-      // req.user = await User.findById(decoded.id);
-
-      console.log('req.user', req.user)
-
+      (req as any).user = decoded.id;
       
     } catch (error) {
       console.log('11111111111111111111111')

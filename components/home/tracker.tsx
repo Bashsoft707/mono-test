@@ -1,4 +1,4 @@
-export const Tracker = () => {
+const Tracker = () => {
   const expensesHeight = [
     70, 110, 130, 70, 120, 70, 110, 70, 100, 110, 90, 120, 100, 120, 110, 100,
     80, 100, 110, 200, 90,
@@ -34,3 +34,5 @@ export const Tracker = () => {
     </div>
   );
 };
+
+export default Tracker;
