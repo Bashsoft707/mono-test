@@ -24,7 +24,7 @@ const SideBar = (props: any) => {
         {!accounts?.length && (
           <div className="mb-4">
             <div className="flex p-6  ">
-              {/* <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" /> */}
+              <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
             </div>
           </div>
         )}
@@ -32,7 +32,7 @@ const SideBar = (props: any) => {
         {accounts?.length ? (
           <div className="px-3 py-6 mt-6 lg:px-5 lg:pl-3 ">
             <div className="flex items-center justify-center">
-              {/* <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" /> */}
+              <img src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
             </div>
           </div>
         ) : (
@@ -42,8 +42,11 @@ const SideBar = (props: any) => {
           <div className="flex-1 flex flex-col items-center justify-center pt-5 pb-4 overflow-y-auto ">
             <div className="flex-1 px-3  divide-y space-y-1 w-full">
               <ul className="space-y-8 ">
-                {sidebarMenu.map((menu) => (
-                  <li className="text-white text-lg font-light  text-center cursor-pointer ">
+                {sidebarMenu.map((menu, idx) => (
+                  <li
+                    className="text-white text-lg font-light  text-center cursor-pointer"
+                    key={idx}
+                  >
                     {menu.menu}
                   </li>
                 ))}

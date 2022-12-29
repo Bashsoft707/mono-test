@@ -102,8 +102,8 @@ const Home = () => {
   const handleLogout = async () => {
     window.localStorage.removeItem("token");
     dispatch<any>(logoutUser());
-    // dispatch<any>(storeTrx([]));
-    // dispatch<any>(storeAccount([]));
+    dispatch<any>(setTransactionState([]));
+    dispatch<any>(setAccountState([]));
     setReload(!reload);
   };
 
@@ -155,7 +155,6 @@ const Home = () => {
             </main>
           </div>
         )}
-        {/* <LinkAccounts  /> */}
         {!accounts?.length && <LinkAccounts handleConnect={handleConnect} />}
       </div>
     </div>

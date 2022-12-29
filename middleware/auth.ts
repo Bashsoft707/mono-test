@@ -41,7 +41,6 @@ const protect =  (
       (req as any).user = decoded.id;
       
     } catch (error) {
-      console.log('11111111111111111111111')
       return res
         .status(401)
         .json({ error: "Not authorized to access this route 2" });

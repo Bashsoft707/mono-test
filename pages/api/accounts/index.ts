@@ -46,7 +46,10 @@ const unlinkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
   const { accountId } = req.body;
 
   await mono.unlinkAccount(accountId);
-  await Account.deleteOne({ accountId });
+
+
+  const account = await Account.findOne({ accountId });
+  await account?.remove();
 
   return res.status(200).json({
     status: "SUCCESS",
@@ -78,7 +81,7 @@ const defaultMethod = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const handlers = {
-  POST: linkAccount,
+  POST: unlinkAccount,
   GET: getAccounts,
   DELETE: unlinkAccount,
   ["undefined"]: defaultMethod,

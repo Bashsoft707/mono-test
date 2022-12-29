@@ -31,12 +31,12 @@ const Balance = (props: any) => {
           Your balance across all Banks
         </p>
         <div className="flex py-8 ">
-          {accounts.map((acc: any) => (
+          {accounts.map((acc: any, idx: number) => (
             <img
               className="h-8 w-8 -ml-2 rounded-full"
               src={acc?.bankLogo}
               alt={acc?.name}
-              key={acc?.id}
+              key={idx}
             />
           ))}
 
@@ -68,8 +68,8 @@ const Balance = (props: any) => {
           </div>
         </div>
         <div className="">
-          {summaries.map((summary) => (
-            <div className="flex space-y-4 flex-col mb-6">
+          {summaries.map((summary, idx) => (
+            <div className="flex space-y-4 flex-col mb-6" key={idx}>
               {" "}
               <div className="flex justify-between">
                 <p className="font-medium text-md">{summary.name}</p>

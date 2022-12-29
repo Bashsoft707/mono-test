@@ -19,7 +19,7 @@ const Transaction = (props: any) => {
         <div className="flow-root">
           <ul className="">
             {trx.map((el: any, i: number) => (
-              <li className="py-2 sm:py-3" key={el?._id}>
+              <li className="py-2 sm:py-3" key={i}>
                 <div className="flex space-x-4">
                   <div className="flex-shrink-0">
                     <img
