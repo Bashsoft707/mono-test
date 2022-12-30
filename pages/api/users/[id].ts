@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import connect from "../../../lib/config";
+import protect from "../../../middleware/auth";
 import User from "../../../models/user";
 
 const getUser = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -56,5 +57,6 @@ const handlers = {
 }
 
 export default async function UserApi (req: NextApiRequest, res: NextApiResponse) {
+  protect(req, res)
     await Promise.all([connect(), handlers[req.method](req, res)])
 }

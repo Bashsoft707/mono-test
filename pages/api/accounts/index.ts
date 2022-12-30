@@ -62,7 +62,6 @@ const getAccounts = asyncHandler(
   }
 );
 const defaultMethod = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("defaultMethod", req.method);
   return res.status(400).json({ success: false });
 };
 
@@ -77,6 +76,5 @@ export default async function AccountApi(
   res: NextApiResponse,
 ) {
   protect(req, res);
-  console.log("req.user 2");
   await Promise.all([connect(), handlers[req.method](req, res)]);
 }

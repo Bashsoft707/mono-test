@@ -19,7 +19,7 @@ const SignIn = () => {
     const currentUser = useSelector(selectUserState)
 
     useEffect(() => {
-        if (currentUser._id) Router.push("/home");
+        if (currentUser?._id) Router.push("/home");
     }, [reload]);
 
     const [formData, setFormData] = useState({ password: "", email: "" });

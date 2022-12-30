@@ -26,8 +26,8 @@ const Tracker = () => {
         className="h-36 sm:p-2 md:p-0 overflow-hidden flex items-end space-x-1 lg:space-x-1 xl:space-x-2 2xl:space-x-2.5  "
       >
         {expensesHeight.map((height, idx) => (
-          <div className=" relative">
-            <Line height={height} key={idx} />
+          <div className=" relative" key={idx}>
+            <Line height={height}  />
           </div>
         ))}
       </div>

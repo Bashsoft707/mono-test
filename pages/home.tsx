@@ -82,7 +82,6 @@ const Home = () => {
     setConfirm(false);
     // setLoading(true);
     const data = await deleteUser();
-    console.log({ data });
     if (data.success) {
       window.localStorage.removeItem("token");
       dispatch<any>(
