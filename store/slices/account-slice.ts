@@ -4,11 +4,12 @@ import { AppState } from "../store";
 
 export interface IAccount {
   _id: string;
- balance: number;
- user: string
-bankLogo: string;
-name: string;
-bankName: string;
+  accountId: string;
+  balance: number;
+  user: string;
+  bankLogo: string;
+  name: string;
+  bankName: string;
 }
 
 const initialState = {
@@ -24,17 +25,17 @@ export const accountSlice = createSlice({
       return {
         ...state.accountState,
         accountState: payload,
-      }
+      };
     },
   },
-//   extraReducers: {
-//     [HYDRATE]: (state, action) => {
-//       return {
-//         ...state,
-//         ...action.payload.transactions,
-//       };
-//     },
-//   },
+  //   extraReducers: {
+  //     [HYDRATE]: (state, action) => {
+  //       return {
+  //         ...state,
+  //         ...action.payload.transactions,
+  //       };
+  //     },
+  //   },
 });
 
 export const { setAccountState } = accountSlice.actions;
