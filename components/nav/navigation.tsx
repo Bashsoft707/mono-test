@@ -1,10 +1,11 @@
 import { IUserData } from "../../store/slices/user-slice";
+import Image from "next/image";
 
 const Navigation = ({ user }: { user: IUserData }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">
-        <img
+        <Image
           className="w-10 h-10 rounded-full"
           src="./Profile.png"
           alt="profile"
@@ -17,7 +18,7 @@ const Navigation = ({ user }: { user: IUserData }) => {
       </div>
       <div className="relative flex p-1 rounded-md cursor-pointer border border-gray-300">
         <p className="pr-2">Today</p>
-        <img src="./calenda.svg" alt="calenda" />
+        <Image src="./calenda.svg" alt="calenda" />
       </div>
     </div>
   );

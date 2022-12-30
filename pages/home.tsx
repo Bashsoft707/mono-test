@@ -26,7 +26,7 @@ import {
 } from "../store/slices/account-slice";
 import { setTransactionState } from "../store/slices/transaction-slice";
 
-const Home = () => {
+const HomePage = () => {
   //state hooks
   const [reload, setReload] = useState(false);
   const [UNLINK, setUnlink] = useState<boolean>(false);
@@ -97,8 +97,6 @@ const Home = () => {
   const handleLogout = async () => {
     window.localStorage.removeItem("token");
     dispatch(logoutUser());
-    dispatch(setTransactionState([]));
-    dispatch(setAccountState([]));
     setReload(!reload);
   };
 
@@ -156,4 +154,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

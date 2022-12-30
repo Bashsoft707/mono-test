@@ -1,4 +1,5 @@
 import { IAccount } from "../../store/slices/account-slice";
+import Image from "next/image";
 
 interface BalanceProps {
   accounts: IAccount[];
@@ -43,7 +44,7 @@ const Balance: React.FC<BalanceProps> = ({
         </p>
         <div className="flex py-8 ">
           {accounts.map((acc, idx: number) => (
-            <img
+            <Image
               className="h-8 w-8 -ml-2 rounded-full"
               src={acc?.bankLogo}
               alt={acc?.name}
@@ -51,7 +52,7 @@ const Balance: React.FC<BalanceProps> = ({
             />
           ))}
 
-          <img
+          <Image
             onClick={() => handleConnect()}
             className="h-8 w-8 ml-2 rounded-full cursor-pointer"
             src="../addbank.svg"

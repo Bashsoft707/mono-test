@@ -1,4 +1,5 @@
 import { Fragment, useRef, useState } from "react";
+import Image from "next/image";
 
 // @ts-ignore
 import { Dialog, Transition } from "@headlessui/react";
@@ -125,7 +126,7 @@ const UnlinkAccount: React.FC<Props> = ({
                             <li className="py-2 sm:py-3 border-b-2" key={idx}>
                               <div className="flex space-x-4">
                                 <div className="flex-shrink-0">
-                                  <img
+                                  <Image
                                     className="h-12 w-12 rounded-full"
                                     src={el.bankLogo}
                                     alt={el.bankName}

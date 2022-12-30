@@ -4,6 +4,7 @@ import Link from "next/link";
 import { signUpUser } from "../api/user";
 import ERRORMSG from "../components/shared/error";
 import Loader from "../components/shared/loader";
+import Image from "next/image";
 
 const SignUp = () => {
   //form data
@@ -43,7 +44,7 @@ const SignUp = () => {
       <div className="flex flex-col max-w-lg pb-6 py-6 lg:px-10 p-4 w-5/6 sm:w-4/6 xl:w-3/6  sm:px-4 sm:pb-6 sm:py-4 h-auto justify-center items-center rounded-2xl  bg-[#FFFFFF]">
         {error && <ERRORMSG message={error} />}
         <div className="flex flex-col gap-4 p-12 items-center justify-center">
-          <img
+          <Image
             src="https://monoassets.com/f/118499/x/53bf3c69fd/logo.svg"
             alt="mono-logo"
             className="w-44"

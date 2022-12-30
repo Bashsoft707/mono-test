@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectTransactionState } from "../../store/slices/transaction-slice";
+import Image from "next/image";
 
 const Transaction = () => {
   const transactions = useSelector(selectTransactionState);
@@ -25,7 +26,7 @@ const Transaction = () => {
               <li className="py-2 sm:py-3" key={i}>
                 <div className="flex space-x-4">
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       className="h-12 w-12 rounded-full"
                       src={`../${images[i] || "addbank"}.svg`}
                       alt={el.name}

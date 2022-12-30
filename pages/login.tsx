@@ -7,6 +7,7 @@ import { signInUser } from "../api/user";
 import ERRORMSG from "../components/shared/error";
 import Loader from "../components/shared/loader";
 import { selectUserState, setUserState } from "../store/slices/user-slice";
+import Image from "next/image";
 
 const SignIn = () => {
   //state hooks
@@ -19,7 +20,7 @@ const SignIn = () => {
   const currentUser = useSelector(selectUserState);
 
   useEffect(() => {
-    if (currentUser?._id) Router.push("/home");
+    if (currentUser?._id) Router.push("/");
   }, [reload]);
 
   const [formData, setFormData] = useState({ password: "", email: "" });
@@ -58,7 +59,7 @@ const SignIn = () => {
       <div className="flex flex-col pb-6 py-4 px-12 sm:px-32 sm:pb-16 sm:py-4 h-auto justify-center items-center rounded-2xl  bg-[#FFFFFF]">
         {error && <ERRORMSG message={error} />}
         <div className="flex flex-col gap-4 p-12 items-center justify-center">
-          <img
+          <Image
             src="https://monoassets.com/f/118499/x/53bf3c69fd/logo.svg"
             alt="mono-logo"
             className="w-44"
@@ -124,10 +125,8 @@ const SignIn = () => {
           </button>
           <div className="flex w-full font-light justify-center items-center text-[#182CD1]">
             <p className="mt-4 text-xs self-center">
-              {" "}
-              Don't have an account?{" "}
+              Don't have an account?
               <span className="cursor-pointer text-xs font-light text-[#182CD1] underline">
-                {" "}
                 <Link href="/register"> Sign up</Link>
               </span>
             </p>
