@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "../store";
 import { HYDRATE } from "next-redux-wrapper";
 
-interface IUserData {
+export interface IUserData {
   _id: string;
   firstName: string;
   lastName: string;

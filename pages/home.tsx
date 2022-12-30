@@ -10,10 +10,10 @@ import { deleteUser } from "../api/user";
 import SideBar from "../components/nav/side-nav";
 import Navigation from "../components/nav/navigation";
 import CONSTANT from "../constant";
-import LinkAccounts from '../components/home/link-account'
-import Tracker from '../components/home/tracker';
+import LinkAccounts from "../components/home/link-account";
+import Tracker from "../components/home/tracker";
 import Transaction from "../components/home/transactions";
-import Balance from '../components/home/balance';
+import Balance from "../components/home/balance";
 import Router from "next/router";
 import {
   logoutUser,
@@ -24,10 +24,7 @@ import {
   selectAccountState,
   setAccountState,
 } from "../store/slices/account-slice";
-import {
-  selectTransactionState,
-  setTransactionState,
-} from "../store/slices/transaction-slice";
+import { setTransactionState } from "../store/slices/transaction-slice";
 
 const Home = () => {
   //state hooks
@@ -40,7 +37,6 @@ const Home = () => {
 
   const user = useSelector(selectUserState);
   const accounts = useSelector(selectAccountState);
-  const transactions = useSelector(selectTransactionState);
 
   useEffect(() => {
     if (!user._id) Router.push("/login");
@@ -55,10 +51,10 @@ const Home = () => {
   const handleFetchData = async () => {
     setLoading(true);
     const acct = await getAccounts();
-    dispatch<any>(setAccountState(acct.data?.accounts));
+    dispatch(setAccountState(acct.data?.accounts));
     if (acct?.data?.accounts?.length) {
       const res = await getTrx(acct.data?.accounts[0].accountId);
-      dispatch<any>(setTransactionState(res.data.trx.data));
+      dispatch(setTransactionState(res.data.trx.data));
     }
 
     setLoading(false);
@@ -67,7 +63,7 @@ const Home = () => {
   const handleConnect = () => {
     const connect = new Connect({
       key: CONSTANT.MONO_PK,
-      onSuccess: async (data: any) => {
+      onSuccess: async (data: { code: string }) => {
         setLoading(true);
         await LinkAccount({ code: data.code });
         setReload(!reload);
@@ -84,7 +80,7 @@ const Home = () => {
     const data = await deleteUser();
     if (data.success) {
       window.localStorage.removeItem("token");
-      dispatch<any>(
+      dispatch(
         setUserState({
           firstName: "",
           lastName: "",
@@ -92,17 +88,17 @@ const Home = () => {
           password: "",
         })
       );
-      dispatch<any>(setTransactionState([]));
-      dispatch<any>(setAccountState([]));
+      dispatch(setTransactionState([]));
+      dispatch(setAccountState([]));
     }
     setReload(!reload);
   };
 
   const handleLogout = async () => {
     window.localStorage.removeItem("token");
-    dispatch<any>(logoutUser());
-    dispatch<any>(setTransactionState([]));
-    dispatch<any>(setAccountState([]));
+    dispatch(logoutUser());
+    dispatch(setTransactionState([]));
+    dispatch(setAccountState([]));
     setReload(!reload);
   };
 
@@ -142,7 +138,7 @@ const Home = () => {
                   <div className="bg-white mt-8 mr-10 col-span-5 ">
                     <Navigation user={user} />
                     <Tracker />
-                    <Transaction trx={transactions} />
+                    <Transaction />
                   </div>
                   <Balance
                     accounts={accounts}

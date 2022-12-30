@@ -2,7 +2,6 @@ const Loader = () => {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto flex items-end align-middle justify-center min-h-screen pt-4 px-4 pb-20 text-center">
       <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-
       <svg
         role="status"
         className="inline mr-2 w-12 h-12  self-center text-gray-200 animate-spin dark:text-gray-600 fill-indigo-600"

@@ -1,5 +1,16 @@
-const Balance = (props: any) => {
-  const { accounts, setUnlink, handleConnect } = props;
+import { IAccount } from "../../store/slices/account-slice";
+
+interface BalanceProps {
+  accounts: IAccount[];
+  setUnlink: (value: boolean) => void;
+  handleConnect: () => void;
+}
+
+const Balance: React.FC<BalanceProps> = ({
+  accounts,
+  setUnlink,
+  handleConnect,
+}) => {
   const summaries = [
     { name: "Food and Drinks", amount: "872.400" },
     { name: "Shopping", amount: "1378.200" },
@@ -17,7 +28,7 @@ const Balance = (props: any) => {
 
   const totalBalance = () => {
     let bal = 0;
-    accounts.forEach((el: any) => {
+    accounts.forEach((el) => {
       bal = el?.balance + bal;
     });
     return bal / 100;
@@ -31,7 +42,7 @@ const Balance = (props: any) => {
           Your balance across all Banks
         </p>
         <div className="flex py-8 ">
-          {accounts.map((acc: any, idx: number) => (
+          {accounts.map((acc, idx: number) => (
             <img
               className="h-8 w-8 -ml-2 rounded-full"
               src={acc?.bankLogo}

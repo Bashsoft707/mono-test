@@ -1,5 +1,8 @@
-const Transaction = (props: any) => {
-  const { trx } = props;
+import { useSelector } from "react-redux";
+import { selectTransactionState } from "../../store/slices/transaction-slice";
+
+const Transaction = () => {
+  const transactions = useSelector(selectTransactionState);
 
   const images = ["cart", "bus", "house", "lamp", "play"];
 
@@ -18,7 +21,7 @@ const Transaction = (props: any) => {
         </div>
         <div className="flow-root">
           <ul className="">
-            {trx.map((el: any, i: number) => (
+            {transactions.map((el, i: number) => (
               <li className="py-2 sm:py-3" key={i}>
                 <div className="flex space-x-4">
                   <div className="flex-shrink-0">

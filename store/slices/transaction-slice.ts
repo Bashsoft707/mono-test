@@ -3,11 +3,12 @@ import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from "../store";
 
 interface ITransaction {
-  transactionId: string;
-  transactionDate: string;
-  transactionType: string;
-  transactionAmount: number;
-  transactionDescription: string;
+name: string;
+amount: number;
+date: string;
+type: string;
+narration: string;
+time: string;
 }
 
 const initialState = {

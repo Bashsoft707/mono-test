@@ -1,6 +1,8 @@
-const LinkAccounts: React.FC = (props: any) => {
-  const { handleConnect } = props;
+interface LinkAccountProps {
+  handleConnect: () => void;
+}
 
+const LinkAccounts: React.FC<LinkAccountProps> = ({ handleConnect }) => {
   return (
     <div className="flex justify-center p-2 items-center w-full h-screen lg:ml-[300px]">
       <div className="flex flex-col justify-center items-center px-4 md:px-12 py-8 max-w-sm bg-[#101010] rounded-lg border border-gray-200 shadow-md  ">

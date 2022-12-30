@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Router from 'next/router'
+import { ChangeEvent, FormEvent, useState } from "react";
+import Router from "next/router";
 import Link from "next/link";
 import { signUpUser } from "../api/user";
 import ERRORMSG from "../components/shared/error";
@@ -16,10 +16,10 @@ const SignUp = () => {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
-  const handleChange = (e: any) =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     const data = await signUpUser(formData);

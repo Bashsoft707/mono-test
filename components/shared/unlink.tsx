@@ -6,12 +6,23 @@ import { useSelector } from "react-redux";
 import { unlinkAccount } from "../../api/account";
 import { selectAccountState } from "../../store/slices/account-slice";
 
-const UnlinkAccount = (props: any) => {
+interface Props {
+  show: boolean;
+  onClose: () => void;
+  setUnlink: (value: boolean) => void;
+  reload: () => void;
+}
+
+const UnlinkAccount: React.FC<Props> = ({
+  show,
+  onClose,
+  reload,
+  setUnlink,
+}) => {
   const cancelButtonRef = useRef(null);
-  const { show, onClose, reload, setUnlink } = props;
   const [loading, setLoading] = useState<boolean>(false);
 
-  const accounts = useSelector(selectAccountState)
+  const accounts = useSelector(selectAccountState);
 
   const handleUnlink = async (id: string) => {
     setLoading(true);
@@ -23,8 +34,11 @@ const UnlinkAccount = (props: any) => {
 
   const Loading = () => (
     <div role="status" className="max-w-full animate-pulse p-3">
-      {accounts?.map((e: any, idx: number) => (
-        <div className="h-10 bg-gray-200  dark:bg-gray-700 w-full mb-4" key={idx}></div>
+      {accounts?.map((_e, idx: number) => (
+        <div
+          className="h-10 bg-gray-200  dark:bg-gray-700 w-full mb-4"
+          key={idx}
+        ></div>
       ))}
 
       <span className="sr-only">Loading...</span>
@@ -107,7 +121,7 @@ const UnlinkAccount = (props: any) => {
                     ) : (
                       <div className="mt-2">
                         <ul className="">
-                          {accounts?.map((el: any, idx: number) => (
+                          {accounts?.map((el, idx: number) => (
                             <li className="py-2 sm:py-3 border-b-2" key={idx}>
                               <div className="flex space-x-4">
                                 <div className="flex-shrink-0">

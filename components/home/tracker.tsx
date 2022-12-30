@@ -4,8 +4,7 @@ const Tracker = () => {
     80, 100, 110, 200, 90,
   ];
 
-  const Line = (props: any) => {
-    const { height } = props;
+  const Line = ({ height }: { height: number }) => {
     return (
       <div
         style={{ height: `${height}px` }}
@@ -27,7 +26,7 @@ const Tracker = () => {
       >
         {expensesHeight.map((height, idx) => (
           <div className=" relative" key={idx}>
-            <Line height={height}  />
+            <Line height={height} />
           </div>
         ))}
       </div>

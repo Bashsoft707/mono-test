@@ -2,9 +2,13 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-const Confirm = (props: any) => {
-  const { open, close, confirm } = props;
+interface ConfirmProps {
+  open: boolean;
+  close: () => void;
+  confirm: () => void;
+}
 
+const Confirm: React.FC<ConfirmProps> = ({ open, close, confirm }) => {
   const cancelButtonRef = useRef(null);
 
   return (

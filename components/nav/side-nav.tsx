@@ -1,3 +1,11 @@
+import { IAccount } from "../../store/slices/account-slice";
+
+interface SideBarProps {
+  accounts: IAccount[];
+  handleLogout: () => void;
+  setConfirm: (value: boolean) => void;
+}
+
 const sidebarMenu = [
   { menu: "Dashboard", id: 1 },
   { menu: "Expenses", id: 2 },
@@ -7,9 +15,11 @@ const sidebarMenu = [
   { menu: "Settings", id: 6 },
 ];
 
-const SideBar = (props: any) => {
-  const { accounts, handleLogout, setConfirm } = props;
-
+const SideBar: React.FC<SideBarProps> = ({
+  accounts,
+  handleLogout,
+  setConfirm,
+}) => {
   return (
     <aside
       id="sidebar"

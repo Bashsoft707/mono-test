@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from "../store";
 
-interface IAccount {
-  accountNumber: string;
-  accountName: string;
-  accountType: string;
-  accountBalance: number;
+export interface IAccount {
+  _id: string;
+ balance: number;
+ user: string
+bankLogo: string;
+name: string;
+bankName: string;
 }
 
 const initialState = {

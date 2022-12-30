@@ -1,5 +1,6 @@
-const Navigation = (props: any) => {
-  const { user } = props;
+import { IUserData } from "../../store/slices/user-slice";
+
+const Navigation = ({ user }: { user: IUserData }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">
@@ -16,7 +17,7 @@ const Navigation = (props: any) => {
       </div>
       <div className="relative flex p-1 rounded-md cursor-pointer border border-gray-300">
         <p className="pr-2">Today</p>
-        {/* <img src="./calenda.svg" alt="calenda" /> */}
+        <img src="./calenda.svg" alt="calenda" />
       </div>
     </div>
   );
