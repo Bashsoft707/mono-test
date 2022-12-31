@@ -42,25 +42,24 @@ const linkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-const getAccounts = asyncHandler(
-  async (req: NextApiRequest, res: NextApiResponse) => {
-    const { user } = req as any;
+const getAccounts = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { user } = req as any;
 
-    if (!user) {
-      return res.status(401).json({
-        status: "FAILED",
-        message: "Unauthorized",
-      });
-    }
-
-    const accounts = await Account.find({ user: user });
-    
-    return res.status(200).json({
-      status: "SUCCESS",
-      accounts,
+  if (!user) {
+    return res.status(401).json({
+      status: "FAILED",
+      message: "Unauthorized",
     });
   }
-);
+
+  const accounts = await Account.find({ user: user });
+
+  return res.status(200).json({
+    status: "SUCCESS",
+    accounts,
+  });
+};
+
 const defaultMethod = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(400).json({ success: false });
 };
@@ -71,11 +70,11 @@ export default async function AccountApi(
   next: any
 ) {
   protect(req, res);
- connect()
+  connect();
 
- switch (req.method) {
+  switch (req.method) {
     case "GET":
-      getAccounts(req, res, next);
+      getAccounts(req, res);
       break;
     case "POST":
       linkAccount(req, res);
@@ -83,5 +82,5 @@ export default async function AccountApi(
     default:
       defaultMethod(req, res);
       break;
- }
+  }
 }
