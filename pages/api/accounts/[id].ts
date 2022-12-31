@@ -40,7 +40,6 @@ const defaultMethod = async (res: NextApiResponse) => {
 export default async function AccountApi(
   req: NextApiRequest,
   res: NextApiResponse,
-  next: any
 ) {
   protect(req, res);
   connect();
