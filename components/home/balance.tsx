@@ -45,18 +45,22 @@ const Balance: React.FC<BalanceProps> = ({
         <div className="flex py-8 ">
           {accounts.map((acc, idx: number) => (
             <Image
-              className="h-8 w-8 -ml-2 rounded-full"
+              className="-ml-2 mr-3 rounded-full"
               src={acc?.bankLogo}
               alt={acc?.name}
               key={idx}
+              width={50}
+              height={12}
             />
           ))}
 
           <Image
             onClick={() => handleConnect()}
-            className="h-8 w-8 ml-2 rounded-full cursor-pointer"
+            className="ml-2 rounded-full cursor-pointer"
             src="../addbank.svg"
             alt="add"
+            width={50}
+            height={12}
           />
         </div>
         <button

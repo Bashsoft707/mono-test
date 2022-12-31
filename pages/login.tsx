@@ -62,7 +62,8 @@ const SignIn = () => {
           <Image
             src="https://monoassets.com/f/118499/x/53bf3c69fd/logo.svg"
             alt="mono-logo"
-            className="w-44"
+            width={120}
+            height={18}
           />
           <p className="text-sm font-light text-[#101010] opacity-70">
             Securely login to your account
@@ -125,7 +126,7 @@ const SignIn = () => {
           </button>
           <div className="flex w-full font-light justify-center items-center text-[#182CD1]">
             <p className="mt-4 text-xs self-center">
-              Don't have an account?
+              {"Don't have an account?"}
               <span className="cursor-pointer text-xs font-light text-[#182CD1] underline">
                 <Link href="/register"> Sign up</Link>
               </span>

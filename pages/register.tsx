@@ -47,7 +47,8 @@ const SignUp = () => {
           <Image
             src="https://monoassets.com/f/118499/x/53bf3c69fd/logo.svg"
             alt="mono-logo"
-            className="w-44"
+            width={120}
+            height={18}
           />
           <p className="text-sm font-light text-[#101010] opacity-70">
             Securely login to your account

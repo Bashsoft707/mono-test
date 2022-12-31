@@ -36,21 +36,28 @@ const unlinkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const defaultMethod = asyncHandler(
-  async (req: NextApiRequest, res: NextApiResponse) => {
+  async (res: NextApiResponse) => {
     return res.status(400).json({ success: false });
   }
 );
 
-const handlers = {
-  POST: unlinkAccount,
-  GET: getTransactions,
-  ["undefined"]: defaultMethod,
-};
-
 export default async function AccountApi(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
+  next: any
 ) {
   protect(req, res);
-  await Promise.all([connect(), handlers[req.method](req, res)]);
+  connect();
+
+  switch (req.method) {
+    case "GET":
+      getTransactions(req, res, next);
+      break;
+    case "POST":
+      unlinkAccount(req, res);
+      break;
+    default:
+      defaultMethod(req, res, next);
+      break;
+  }
 }

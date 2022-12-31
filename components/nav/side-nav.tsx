@@ -35,7 +35,13 @@ const SideBar: React.FC<SideBarProps> = ({
         {!accounts?.length && (
           <div className="mb-4">
             <div className="flex p-6  ">
-              <Image src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
+              <Image
+                src="./Group.svg"
+                className="-mr-4"
+                alt="Mono Logo"
+                width={5}
+                height={5}
+              />
             </div>
           </div>
         )}
@@ -43,7 +49,13 @@ const SideBar: React.FC<SideBarProps> = ({
         {accounts?.length ? (
           <div className="px-3 py-6 mt-6 lg:px-5 lg:pl-3 ">
             <div className="flex items-center justify-center">
-              <Image src="./Group.svg" className="h-5 -mr-4" alt="Mono Logo" />
+              <Image
+                src="./Group.svg"
+                className="mr-4"
+                alt="Mono Logo"
+                width={5}
+                height={5}
+              />
             </div>
           </div>
         ) : (

@@ -54,7 +54,7 @@ const HomePage = () => {
     dispatch(setAccountState(acct.data?.accounts));
     if (acct?.data?.accounts?.length) {
       const res = await getTrx(acct.data?.accounts[0].accountId);
-      dispatch(setTransactionState(res.data.trx.data));
+      dispatch(setTransactionState(res?.data.trx.data));
     }
 
     setLoading(false);

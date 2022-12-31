@@ -49,14 +49,23 @@ const defaultMethod = async (res: NextApiResponse) => {
     return res.status(400).json({ success: false });
     };
 
-const handlers = {
-    GET: getUser,
-    PUT: updateUser,
-    DELETE: deleteUser,
-    ["undefined"]: defaultMethod
-}
 
 export default async function UserApi (req: NextApiRequest, res: NextApiResponse) {
   protect(req, res)
-    await Promise.all([connect(), handlers[req.method](req, res)])
+  connect();
+
+  switch (req.method) {
+    case "GET":
+      getUser(req, res);
+      break;
+    case "PUT":
+      updateUser(req, res);
+      break;
+    case "DELETE":
+      deleteUser(req, res);
+      break;
+    default:
+      defaultMethod(res);
+      break;
+  }
 }

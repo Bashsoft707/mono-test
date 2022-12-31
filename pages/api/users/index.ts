@@ -13,12 +13,16 @@ const defaultMethod = async (res: NextApiResponse) => {
     return res.status(400).json({ success: false });
   };
 
-const handlers = {
-    GET: getUsers,
-    ["undefined"]: defaultMethod
-}
-
 export default async function UserApi (req: NextApiRequest, res: NextApiResponse) {
     protect(req, res)
-    await Promise.all([connect(), handlers[req.method](req, res)])
+    connect();
+
+    switch (req.method) {
+        case "GET":
+            getUsers(req, res);
+            break;
+        default:
+            defaultMethod(res);
+            break;
+    }
 }

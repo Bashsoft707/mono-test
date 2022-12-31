@@ -41,14 +41,18 @@ const defaultMethod = async (res: NextApiResponse) => {
   return res.status(400).json({ success: false });
 };
 
-const handlers = {
-  POST: signUp,
-  ["undefined"]: defaultMethod,
-};
-
 export default async function SignUp(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await Promise.all([connect(), handlers[req.method](req, res)]);
+  connect();
+
+  switch (req.method) {
+    case "POST":
+      signUp(req, res);
+      break;
+    default:
+      defaultMethod(res);
+      break;
+  }
 }

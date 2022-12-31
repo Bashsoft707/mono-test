@@ -27,9 +27,11 @@ const Transaction = () => {
                 <div className="flex space-x-4">
                   <div className="flex-shrink-0">
                     <Image
-                      className="h-12 w-12 rounded-full"
+                      className="rounded-full"
                       src={`../${images[i] || "addbank"}.svg`}
                       alt={el.name}
+                      width={24}
+                      height={24}
                     />
                   </div>
                   <div className="flex-1  min-w-0">

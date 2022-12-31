@@ -43,7 +43,7 @@ const linkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const getAccounts = asyncHandler(
-  async (req: NextApiRequest, res: NextApiResponse, next: any) => {
+  async (req: NextApiRequest, res: NextApiResponse) => {
     const { user } = req as any;
 
     if (!user) {
@@ -65,16 +65,23 @@ const defaultMethod = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(400).json({ success: false });
 };
 
-const handlers = {
-  POST: linkAccount,
-  GET: getAccounts,
-  ["undefined"]: defaultMethod,
-};
-
 export default async function AccountApi(
   req: NextApiRequest,
   res: NextApiResponse,
+  next: any
 ) {
   protect(req, res);
-  await Promise.all([connect(), handlers[req.method](req, res)]);
+ connect()
+
+ switch (req.method) {
+    case "GET":
+      getAccounts(req, res, next);
+      break;
+    case "POST":
+      linkAccount(req, res);
+      break;
+    default:
+      defaultMethod(req, res);
+      break;
+ }
 }
