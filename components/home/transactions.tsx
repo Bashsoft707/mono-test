@@ -29,7 +29,7 @@ const Transaction = () => {
                     <Image
                       className="rounded-full"
                       src={`../${images[i] || "addbank"}.svg`}
-                      alt={el.name}
+                      alt={el?.name}
                       width={24}
                       height={24}
                     />

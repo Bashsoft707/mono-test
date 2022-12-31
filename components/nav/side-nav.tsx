@@ -37,7 +37,7 @@ const SideBar: React.FC<SideBarProps> = ({
             <div className="flex p-6  ">
               <Image
                 src="./Group.svg"
-                className="-mr-4"
+                className="-mr-4 w-auto h-auto"
                 alt="Mono Logo"
                 width={5}
                 height={5}

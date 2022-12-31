@@ -129,7 +129,7 @@ const UnlinkAccount: React.FC<Props> = ({
                                   <Image
                                     className="rounded-full"
                                     src={el.bankLogo}
-                                    alt={el.bankName}
+                                    alt={el?.bankName}
                                     width={24}
                                     height={24}
                                   />
