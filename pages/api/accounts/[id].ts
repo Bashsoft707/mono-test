@@ -33,9 +33,9 @@ const unlinkAccount = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-const defaultMethod = asyncHandler(async (res: NextApiResponse) => {
+const defaultMethod = async (res: NextApiResponse) => {
   return res.status(400).json({ success: false });
-});
+};
 
 export default async function AccountApi(
   req: NextApiRequest,
@@ -53,7 +53,7 @@ export default async function AccountApi(
       unlinkAccount(req, res);
       break;
     default:
-      defaultMethod(req, res, next);
+      defaultMethod(res);
       break;
   }
 }

@@ -3,7 +3,6 @@ import connect from "../../../lib/config";
 import Account from "../../../models/account";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getBankkLogo } from "../../../utils";
-import asyncHandler from "../../../middleware/async";
 import protect from "../../../middleware/auth";
 
 const mono = new Mono();
