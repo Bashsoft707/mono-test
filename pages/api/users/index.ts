@@ -4,7 +4,7 @@ import protect from "../../../middleware/auth";
 import User from "../../../models/user";
 
 const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
-    const users = await User.find();
+    const users = await User.find().select("-password");
 
     res.status(200).json({ success: true, data: users });
 }

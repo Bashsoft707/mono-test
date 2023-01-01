@@ -6,7 +6,7 @@ import User from "../../../models/user";
 const getUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
 
-  const user = await User.findById(id);
+  const user = await User.findById(id).select("-password");
 
   if (!user) {
     return res.status(404).json({ success: false });
@@ -18,7 +18,7 @@ const getUser = async (req: NextApiRequest, res: NextApiResponse) => {
 const updateUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
 
-  const user = await User.findById(id);
+  const user = await User.findById(id).select("-password");
 
   if (!user) {
     return res.status(404).json({ success: false });

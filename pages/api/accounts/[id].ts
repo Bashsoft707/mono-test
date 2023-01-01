@@ -1,7 +1,6 @@
 import Mono from "../../../lib/mono";
 import connect from "../../../lib/config";
 import { NextApiRequest, NextApiResponse } from "next";
-import asyncHandler from "../../../middleware/async";
 import protect from "../../../middleware/auth";
 import Account from "../../../models/account";
 

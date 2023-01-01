@@ -12,7 +12,7 @@ const signIn = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const user = await User.findOne({
       email,
-    });
+    }).select("+password")
 
     if (!user) {
       return res.status(422).json({ error: "Invalid email or password" });
